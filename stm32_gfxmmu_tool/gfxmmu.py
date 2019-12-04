@@ -65,8 +65,8 @@ class Context:
         self.color_mode = ColorMode.RGB888
         self.lines = []
         self.buf_size = 0
-        self.output = "stm32_gfxmmu"
-
+        self.output = ""
+        self.basename = "stm32_gfxmmu"
 
 def calc_line_offsets(ctx):
     """

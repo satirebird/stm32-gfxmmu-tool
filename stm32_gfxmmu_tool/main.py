@@ -11,7 +11,8 @@ def main():
     parser.add_argument( "ysize", type=int, help="number of pixel in y direction")
 
     parser.add_argument("-s", "--shape", help="the shape of the display (round)")
-    parser.add_argument("-o", "--output", help="output file prefix, defaults to 'stm32_gfxmmu'")
+    parser.add_argument("-o", "--output", help="output directory, defaults to current directoy")
+    parser.add_argument("-n", "--basename", help="the base name of the generated files, default: 'stm32_gfxmmu'")
     parser.add_argument("-c", "--color", help="color mode (" + ColorMode.avail() + ") default: 'RGB888'")
     parser.add_argument("-b", "--bmode", help="block mode, either 192 (default) or 256")
 
@@ -43,6 +44,9 @@ def main():
             print("Unknown block mode\n", file=sys.stderr)
             parser.print_help(sys.stderr)
             sys.exit(2)
+
+    if args.basename:
+        ctx.basename = args.basename
 
     shape = "round"
     if args.shape:

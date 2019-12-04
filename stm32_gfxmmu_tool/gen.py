@@ -1,3 +1,4 @@
+import os
 from mako.template import Template
 import pkgutil
 
@@ -9,6 +10,7 @@ def gen_sources(ctx):
     for f in files:
         res = pkgutil.get_data(__package__, "templates/stm32_gfxmmu" + f).decode()
         template = Template(res)
-        fo = open(ctx.output + f, "w+")
+        outpath = os.path.join(ctx.output, ctx.basename)
+        fo = open(outpath + f, "w+")
         fo.write(template.render(ctx=ctx))
         fo.close

@@ -4,7 +4,7 @@
  * The following tabel contains the data for the GFXMMU lookup table.
  */
 
-#include "${ctx.output}.h"
+#include "${ctx.basename}.h"
 
 static const uint32_t stm32_gfxmmu_lut[STM32_GFXMMU_LUT_LENGTH] = {
 % for l in ctx.lines:
